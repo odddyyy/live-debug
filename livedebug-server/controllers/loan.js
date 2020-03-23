@@ -14,8 +14,8 @@ class LoanController {
 
   static find(req, res, next) {
     Loan.findAll()
-      .then(function(loans) {
-        res.json(loans);
+      .then(loans => {
+          res.json(loans);
       })
       .catch(err => {
         next(err)
@@ -24,7 +24,7 @@ class LoanController {
 
   static returnALoan(req, res, next) {
     const { id } = req.params;
-    Loan.findOne({ id })
+    Loan.findOne({where:{id:id}})
       .then(function(loan) {
         if (!loan) {
           next({ code: 404, resource: 'Loan' });
