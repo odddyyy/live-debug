@@ -7,7 +7,9 @@ class MemberController {
       .then(function(newMember) {
         res.status(201).json(newMember);
       })
-      .catch(next);
+      .catch(err => {
+        next(err)
+      });
   }
 }
 

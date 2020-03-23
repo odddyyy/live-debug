@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "initDB": "NODE_ENV=test sequelize db:create && NODE_ENV=test sequelize db:migrate",
     "dev": "npx nodemon bin/www",
     "test": "NODE_ENV=test jest --detectOpenHandles --runInBand --forceExit"
   },

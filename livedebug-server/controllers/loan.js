@@ -7,7 +7,9 @@ class LoanController {
       .then(function(newLoan) {
         res.status(201).json(newLoan);
       })
-      .catch(next);
+      .catch(err => {
+        next(err)
+      });
   }
 
   static find(req, res, next) {
@@ -15,7 +17,9 @@ class LoanController {
       .then(function(loans) {
         res.json(loans);
       })
-      .catch(next);
+      .catch(err => {
+        next(err)
+      });
   }
 
   static returnALoan(req, res, next) {

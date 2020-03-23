@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Member = sequelize.init('Member', {
+  const Member = sequelize.define('Member',{
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -79,9 +79,10 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     }
-  }, {});
+  }, {sequelize});
   Member.associate = function(models) {
-    Member.hasMany(models.Loan)
+    Member.hasMany(models.Loan, { foreignKey: 'MemberId' })
+    Member.belongsToMany(models.Book, { through: models.Loan })
   };
   return Member;
 };
