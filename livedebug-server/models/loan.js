@@ -46,8 +46,8 @@ module.exports = (sequelize, DataTypes) => {
     date_returned: DataTypes.DATE
   }, {});
   Loan.associate = function(models) {
-    Loan.belongsTo(models.Member, { foreignKey: 'MemberId' })
-    Loan.belongsTo(models.Book, { foreignKey: 'BookId' })
+    Loan.belongsTo(models.Member)
+    Loan.belongsTo(models.Book)
   };
   return Loan;
 };

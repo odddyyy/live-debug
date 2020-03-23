@@ -81,8 +81,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {sequelize});
   Member.associate = function(models) {
-    Member.hasMany(models.Loan, { foreignKey: 'MemberId' })
-    Member.belongsToMany(models.Book, { through: models.Loan })
+    Member.hasMany(models.Loan)
   };
   return Member;
 };
